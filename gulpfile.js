@@ -12,6 +12,7 @@ var sources = {
     'gulpfile.js',
     'routes/**/*.js',
     'server.js',
+    'services/**/*.js',
   ],
   templates: [
     'views/**/*.handlebars',
