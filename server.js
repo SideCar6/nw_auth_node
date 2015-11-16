@@ -4,8 +4,9 @@ var express = require('express'),
     logger = require('morgan'),
     exphbs = require('express-handlebars'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
-    // passport = require('passport');
+    session = require('express-session'),
+    bodyParser = require('body-parser'),
+    passport = require('passport');
 
 var app = express();
 
@@ -29,6 +30,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public/'));
 app.use(cookieParser());
+
+require('./services/passport');
+app.use(session({
+  cookie: { maxAge: 7 * 24 * 60 * 60000 },
+  secret: 'klajs987892345&^908w234jsafdjkljaslkfdn',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', require('./routes/index'));
 

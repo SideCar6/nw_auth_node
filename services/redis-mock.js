@@ -2,15 +2,21 @@
 
 var fs = require('fs'),
     path = require('path'),
-    storePath = path.join(__dirname, '../data/sql_store.json'),
+    storePath = path.join(__dirname, '../data/redis_store.json'),
     store = require('../data/sql_store');
 
 module.exports = {
-  getUserByEmail: function (email, callback) {
+  addSession: function (id, data, callback) {
+    store.sessions[id] = data;
 
+    fs.writeFile(storePath, JSON.stringify(store, null, 2), {
+      encoding: 'utf8'
+    }, callback);
   },
 
-  getUserById: function (id, callback) {
-
+  getSessionById: function (id, callback) {
+    process.nextTick( function () {
+      return callback(null, store.sessions[id]);
+    });
   }
 };

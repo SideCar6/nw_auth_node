@@ -11,5 +11,10 @@ module.exports = {
     return res.render('signup', {
       title: 'NovelWriter Signup'
     });
-  }
+  },
+
+  handleLogout: function (req, res) {
+    req.logout();
+    return res.redirect('/login');
+  },
 };
