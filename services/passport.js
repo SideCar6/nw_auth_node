@@ -43,7 +43,7 @@ passport.use('login-local', new LocalStrategy({
         if (!user) {
           var error = new Error('User not found');
           error.status = 401;
-          return callback(err);
+          return callback(error);
         }
 
         return callback(null, user);

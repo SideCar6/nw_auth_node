@@ -1,4 +1,12 @@
 {
-  "emails": {},
-  "users": {}
+  "emails": {
+    "test@test.lan": "1eec9242-ffdf-487e-a1f6-f8779018f6ce"
+  },
+  "users": {
+    "1eec9242-ffdf-487e-a1f6-f8779018f6ce": {
+      "email": "test@test.lan",
+      "password": "$2a$10$aJbT.R1D7gb3m4.cAxIxuOJXCsDxK.CZIV65iAf4MIYvUfChStCA6",
+      "id": "1eec9242-ffdf-487e-a1f6-f8779018f6ce"
+    }
+  }
 }

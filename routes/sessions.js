@@ -19,4 +19,12 @@ module.exports = function (router) {
   }));
 
   router.get('/logout', controller.handleLogout);
+
+  router.get('/isAuthenticated', function (req, res) {
+    if (req.isAuthenticated()) {
+      return res.end();
+    }
+
+    return res.status(401).end();
+  });
 };

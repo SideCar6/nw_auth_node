@@ -5,6 +5,7 @@ var express = require('express'),
     exphbs = require('express-handlebars'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
+    RedisStore = require('connect-redis')(session),
     bodyParser = require('body-parser'),
     passport = require('passport');
 
@@ -33,10 +34,14 @@ app.use(cookieParser());
 
 require('./services/passport');
 app.use(session({
-  cookie: { maxAge: 7 * 24 * 60 * 60000 },
-  secret: 'klajs987892345&^908w234jsafdjkljaslkfdn',
+  cookie: { maxAge: 14 * 24 * 60 * 60000 },
+  domain: 'herokuapp.com',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  secret: process.env.NW_SESSION_SECRET,
+  store: new RedisStore({
+    url: process.env.REDISCLOUD_URL
+  }),
 }));
 app.use(passport.initialize());
 app.use(passport.session());

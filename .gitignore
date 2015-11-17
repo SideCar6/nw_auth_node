@@ -4,3 +4,4 @@ public/components/
 npm-debug.log
 coverage/
 logs/
+data/
