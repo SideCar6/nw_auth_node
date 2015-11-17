@@ -7,6 +7,7 @@
     "async": "^1.5.0",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.1",
+    "bower": "^1.6.5",
     "connect-redis": "^3.0.1",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
@@ -25,7 +26,7 @@
     "jshint-stylish": "^2.1.0"
   },
   "scripts": {
-    "test": "npm test"
+    "postinstall": "bower install"
   },
   "author": "Matt Merkes",
   "license": "MIT"

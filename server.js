@@ -31,11 +31,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public/'));
 app.use(cookieParser());
+app.use(function (req, res, next) {
+  console.log(JSON.stringify(req.cookies, null, 2));
+  console.log(JSON.stringify(req.headers, null, 2));
+  return next();
+});
 
 require('./services/passport');
 app.use(session({
-  cookie: { maxAge: 14 * 24 * 60 * 60000 },
-  domain: 'herokuapp.com',
+  cookie: {
+    maxAge: 14 * 24 * 60 * 60000
+  },
   resave: true,
   saveUninitialized: true,
   secret: process.env.NW_SESSION_SECRET,
