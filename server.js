@@ -31,11 +31,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public/'));
 app.use(cookieParser());
-app.use(function (req, res, next) {
-  console.log(JSON.stringify(req.cookies, null, 2));
-  console.log(JSON.stringify(req.headers, null, 2));
-  return next();
-});
 
 require('./services/passport');
 app.use(session({
